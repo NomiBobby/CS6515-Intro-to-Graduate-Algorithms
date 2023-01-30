@@ -35,9 +35,7 @@ def initTable(numItems, maxWt):
               -- contain a single numeric value (no tuples or other complicated abstract data types)
     """
     # TODO Replace the following with your code to initialize the table properly
-
-    T = [0][0]
-    return T
+    return [[0 for i in range(maxWt + 1)] for j in range (numItems + 1)]
 
 
 def buildItemIterable(numItems):
@@ -48,8 +46,7 @@ def buildItemIterable(numItems):
     Note: the index (key value) for items are integer values 1..N inclusive
     """
     # TODO Replace the following with your code to build the item iterable
-
-    return range(0)
+    return range(1, numItems+1)
 
 
 def buildWeightIterable(maxWt):
@@ -58,8 +55,7 @@ def buildWeightIterable(maxWt):
         maxWt : maximum weight available
     """
     # TODO Replace the following with your code to build the weight iterable
-
-    return range(0)
+    return range(1, maxWt + 1)
 
 
 def subProblem(T, weight, itemIDX, itemWt, itemVal):
@@ -73,8 +69,12 @@ def subProblem(T, weight, itemIDX, itemWt, itemVal):
         itemVal : the value of the item
     """
     # TODO Replace the following with your code to solve the subproblem appropriately!
-
-    return T[0][0]
+    if itemWt <= weight:
+        val1 = itemVal + T[itemIDX - 1][weight - itemWt]
+        val2 = T[itemIDX - 1][weight]
+        return max(val1, val2)
+    else:
+        return T[itemIDX - 1][weight]
 
 
 def buildResultList(T, itemsDict, maxWt):
@@ -89,6 +89,12 @@ def buildResultList(T, itemsDict, maxWt):
     result = []
 
     # TODO Your code goes here to build the list of chosen items!
+    for j in range(1, len(itemsDict)+1)[::-1]:
+        val1 = T[j][maxWt]
+        val2 = T[j-1][maxWt]
+        if val1 > val2:
+            result.append(itemsDict[j])
+            maxWt = maxWt - itemsDict[j][1]
 
     return result
 
@@ -118,7 +124,7 @@ def knapsack(itemsDict, maxWt):
             # expand table values by solving subproblem
             table[itmIdx][w] = subProblem(table, w, itmIdx, itemWt, itemVal)
 
-    # build list of results - chosen items to maximize value for a given weight
+    # build list of results - chosen items to m aximize value for a given weight
     return buildResultList(table, itemsDict, maxWt)
 
 
