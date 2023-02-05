@@ -9,6 +9,7 @@ This course is a graduate-level course in the design and analysis of algorithms.
 * LIS 
 * LCS
 * Knapsack
+* Chain Maintrix  Multiply
 
 
 ### Divide and conquer
