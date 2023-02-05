@@ -10,6 +10,7 @@ This course is a graduate-level course in the design and analysis of algorithms.
 * LCS
 * Knapsack
 * Chain Maintrix  Multiply
+* Shortest path: **UNFINISHED!**
 
 
 ### Divide and conquer
