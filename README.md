@@ -17,3 +17,14 @@ This course is a graduate-level course in the design and analysis of algorithms.
 * Faster Integer Multiplication
 * Linear Time Median (Linear Time Selection)
 * Fast Fourier Transform
+
+### RSA cryptosystem
+* Modular Arithmetic (in progress)
+* RSA protocol (in progress)
+* Primality testing (in progress)
+
+### Graph algorithms
+* Strongly Connected Components
+* 2-SAT
+* Minimum Spanning Tree (MST)
+* Ford-Fulkerson algorithm for Max-flow
