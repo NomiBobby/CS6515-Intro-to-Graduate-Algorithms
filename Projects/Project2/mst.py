@@ -38,6 +38,15 @@ class unionFind:
             make sure your algorithm is optimal.
         """
         #TODO Your Code Goes Here
+        rx = self.find(u)
+        ry = self.find(v)
+        if rx == ry: return 1 # They are in the same component
+        if self.rank[rx] > self.rank[ry]:
+            self.pi[ry] = rx
+        else:
+            self.pi[rx] = ry
+            if self.rank[rx] == self.rank[ry]:
+                self.rank[ry] = self.rank[ry] + 1
 
     def find(self, p):
         """
@@ -63,13 +72,14 @@ def kruskal(G):
     #Go through edges in sorted order smallest, to largest
     for e in sortedEdges:
         #TODO Your Code Goes Here (remove comments if you wish)
-
         # use the following line to add an edge to the MST.
         # You may change it's indentation/scope within the code
         # but do not otherwise modify it
-
-        MST.add(util.buildMSTEdge(G,e))
-
+        u = e[0]
+        v = e[1]
+        if uf.find(u) != uf.find(v):
+            MST.add(util.buildMSTEdge(G,e))
+            uf.union(u, v)
         #Done - do not modify any other code below this line
     return MST, uf
 
