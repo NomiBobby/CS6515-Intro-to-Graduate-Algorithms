@@ -77,7 +77,7 @@ def kruskal(G):
         # but do not otherwise modify it
         u = e[0]
         v = e[1]
-        if uf.find(u) != uf.find(v):
+        if not uf.areConnected(u, v):
             MST.add(util.buildMSTEdge(G,e))
             uf.union(u, v)
         #Done - do not modify any other code below this line
