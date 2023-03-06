@@ -26,6 +26,10 @@ class unionFind:
 			or False if they are not by comparing their roots
         """
         #TODO Your Code Goes Here
+        if self.find(p) == self.find(q):
+            return True
+        else:
+            return False
 
     def union(self, u, v):
         """
@@ -41,6 +45,9 @@ class unionFind:
             passed vertex p - Must use path compression!
         """
         #TODO Your Code Goes Here
+        if p != self.pi[p]:
+            self.pi[p] = self.find(self.pi[p])
+        return self.pi[p]
 
 def kruskal(G):
     """
